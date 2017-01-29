@@ -1,0 +1,22 @@
+db:
+  image: mariadb:10
+  environment:
+    MYSQL_DATABASE: dbms-cohort-starport_development
+    MYSQL_ROOT_PASSWORD: secret
+
+web:
+  build: .
+  links:
+    - db
+  ports:
+    - "3001:3000"
+  volumes:
+    - .:/usr/src/app
+  volumes_from:
+    - gems
+
+gems:
+  image: busybox
+  volumes:
+    - /ruby_gems
+
