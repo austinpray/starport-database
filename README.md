@@ -1,24 +1,26 @@
-# README
+# Starport Database
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Run with Docker
 
-Things you may want to cover:
+Install [Docker][] on your system. [Install Guide][Install Docker].
 
-* Ruby version
+Install the deps
 
-* System dependencies
+```
+docker-compose run --rm web bundle install
+```
 
-* Configuration
+Run the app
 
-* Database creation
+```
+docker-compose up
+```
 
-* Database initialization
+It should now be running at [http://localhost:3001](http://localhost:3001)
 
-* How to run the test suite
+## Run Standalone
 
-* Services (job queues, cache servers, search engines, etc.)
+Needs Ruby 2.4
 
-* Deployment instructions
-
-* ...
+[Docker]: https://www.docker.com/
+[Install Docker]: https://docs.docker.com/engine/installation/
