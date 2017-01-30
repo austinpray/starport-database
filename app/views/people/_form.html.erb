@@ -1,0 +1,82 @@
+<%= form_for(person) do |f| %>
+  <% if person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+      <% person.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :familyName %>
+    <%= f.text_field :familyName %>
+  </div>
+
+  <div class="field">
+    <%= f.label :givenName %>
+    <%= f.text_field :givenName %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender %>
+    <%= f.text_field :gender %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telephone %>
+    <%= f.text_field :telephone %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :streetAddress %>
+    <%= f.text_field :streetAddress %>
+  </div>
+
+  <div class="field">
+    <%= f.label :postalCode %>
+    <%= f.text_field :postalCode %>
+  </div>
+
+  <div class="field">
+    <%= f.label :postOfficeBoxNumber %>
+    <%= f.text_field :postOfficeBoxNumber %>
+  </div>
+
+  <div class="field">
+    <%= f.label :addressRegion %>
+    <%= f.text_field :addressRegion %>
+  </div>
+
+  <div class="field">
+    <%= f.label :addressLocality %>
+    <%= f.text_field :addressLocality %>
+  </div>
+
+  <div class="field">
+    <%= f.label :addressCountry %>
+    <%= f.text_field :addressCountry %>
+  </div>
+
+  <div class="field">
+    <%= f.label :homePlanet %>
+    <%= f.text_field :homePlanet %>
+  </div>
+
+  <div class="field">
+    <%= f.label :birthDate %>
+    <%= f.date_select :birthDate %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
