@@ -7,7 +7,8 @@ RUN apk add --update --no-cache \
   tzdata \
   libxml2-dev \
   libxslt-dev \
-  mariadb-dev
+  mariadb-dev \
+  graphviz
 RUN bundle config build.nokogiri --use-system-libraries
 
 ENV APP_HOME /usr/src/app
