@@ -1,3 +1,17 @@
-// Place all the styles related to the Welcome controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.jumbotron-welcome {
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  &:before {
+    z-index: -1;
+    background-image: image-url("starport.jpg");
+    background-size: cover;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    filter: brightness(0.5);
+  }
+}

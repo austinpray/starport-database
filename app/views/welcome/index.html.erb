@@ -1,2 +1,33 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div class="jumbotron jumbotron-welcome">
+<h1>Starport Operations Center</h1>
+<p>This application manages the day-to-day operations of the starport</p>
+<p>
+  <%= link_to "Get Started", new_user_session_path, :class => "btn btn-primary btn-lg" %>
+</p>
+</div>
+<div class="page-header">
+  <h1>Starport Management</h1>
+</div>
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <%= image_tag "troopers.jpg" %>
+      <div class="caption">
+        <h3>Passengers</h3>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">Manage Passengers</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <%= image_tag "ship.jpg" %>
+      <div class="caption">
+        <h3>Ships</h3>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">Manage Ships</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
