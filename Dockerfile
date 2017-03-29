@@ -11,7 +11,9 @@ RUN apk add --update --no-cache \
   graphviz \
   ttf-droid \
   ttf-droid-nonlatin \
-  ttf-ubuntu-font-family
+  ttf-ubuntu-font-family && \
+  rm -rf /var/cache/apk/*
+
 RUN bundle config build.nokogiri --use-system-libraries
 
 ENV APP_HOME /usr/src/app
