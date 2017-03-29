@@ -7,6 +7,7 @@ services:
       MYSQL_ROOT_PASSWORD: secret
     volumes:
       - dbms_starport_db_dev:/var/lib/mysql
+      - ./db/dev.my.cnf:/etc/mysql/conf.d/dev.my.cnf
     ports:
       - "3306:3306"
 

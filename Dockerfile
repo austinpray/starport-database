@@ -1,6 +1,10 @@
 # https://jbhannah.net/articles/rails-development-with-docker/
 FROM ruby:2-alpine
 
+ENV LC_ALL=en_US.UTF-8 \
+    LANG=en_US.UTF-8 \
+    LANGUAGE=en_US.UTF-8
+
 RUN apk add --update --no-cache \
   build-base \
   nodejs \
