@@ -9,7 +9,7 @@ services:
       - dbms_starport_db_dev:/var/lib/mysql
       - ./db/dev.my.cnf:/etc/mysql/conf.d/dev.my.cnf
     ports:
-      - "3306:3306"
+      - "3307:3306"
 
   web:
     build: .
