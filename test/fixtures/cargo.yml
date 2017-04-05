@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  safefy_rating: 1
+  description: MyText
+  person: one
+  weight: 9.99
+
+two:
+  safefy_rating: 1
+  description: MyText
+  person: two
+  weight: 9.99
