@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  ship: one
+  display_name: MyString
+  slug: MyString
+
+two:
+  type: 
+  ship: two
+  display_name: MyString
+  slug: MyString

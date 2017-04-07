@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170407011604) do
+ActiveRecord::Schema.define(version: 20170407012737) do
 
   create_table "cargo", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "safefy_rating"
@@ -48,6 +48,18 @@ ActiveRecord::Schema.define(version: 20170407011604) do
     t.decimal  "distance",                  precision: 10
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+  end
+
+  create_table "facilities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "type"
+    t.integer  "ship_id"
+    t.integer  "parent_terminal_id"
+    t.string   "display_name"
+    t.string   "slug"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["parent_terminal_id"], name: "index_facilities_on_parent_terminal_id", using: :btree
+    t.index ["ship_id"], name: "index_facilities_on_ship_id", using: :btree
   end
 
   create_table "people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -117,4 +129,6 @@ ActiveRecord::Schema.define(version: 20170407011604) do
   add_foreign_key "crew_slot_assignments", "people"
   add_foreign_key "crew_slot_assignments", "ships"
   add_foreign_key "crew_slots", "specialties"
+  add_foreign_key "facilities", "facilities", column: "parent_terminal_id"
+  add_foreign_key "facilities", "ships"
 end
