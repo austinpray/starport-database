@@ -22,6 +22,7 @@
 #
 
 class Person < ApplicationRecord
-  has_and_belongs_to_many :specialties
+  has_many :specialties, through: :specializations
+  has_many :specializations
   has_one :crew_slot_assignment
 end

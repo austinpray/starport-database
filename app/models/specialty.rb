@@ -1,3 +1,4 @@
 class Specialty < ApplicationRecord
-  has_and_belongs_to_many :people
+  has_many :people, through: :specializations
+  has_many :specializations
 end
