@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  danger_rating: 1
+  duration: 1
+  cost: 9.99
+  status: MyString
+  destination: one
+  ship: one
+  facility: one
+  departure_date: 2017-04-06 20:33:15
+
+two:
+  danger_rating: 1
+  duration: 1
+  cost: 9.99
+  status: MyString
+  destination: two
+  ship: two
+  facility: two
+  departure_date: 2017-04-06 20:33:15

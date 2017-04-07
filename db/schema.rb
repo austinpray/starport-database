@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170407012737) do
+ActiveRecord::Schema.define(version: 20170407013433) do
 
   create_table "cargo", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "safefy_rating"
@@ -62,6 +62,15 @@ ActiveRecord::Schema.define(version: 20170407012737) do
     t.index ["ship_id"], name: "index_facilities_on_ship_id", using: :btree
   end
 
+  create_table "flight_logs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "trip_id"
+    t.integer  "person_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_flight_logs_on_person_id", using: :btree
+    t.index ["trip_id"], name: "index_flight_logs_on_trip_id", using: :btree
+  end
+
   create_table "people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "type"
     t.string   "familyName"
@@ -107,6 +116,22 @@ ActiveRecord::Schema.define(version: 20170407012737) do
     t.datetime "updated_at",                null: false
   end
 
+  create_table "trips", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "danger_rating"
+    t.integer  "duration"
+    t.decimal  "cost",           precision: 10
+    t.string   "status"
+    t.integer  "destination_id"
+    t.integer  "ship_id"
+    t.integer  "facility_id"
+    t.datetime "departure_date"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["destination_id"], name: "index_trips_on_destination_id", using: :btree
+    t.index ["facility_id"], name: "index_trips_on_facility_id", using: :btree
+    t.index ["ship_id"], name: "index_trips_on_ship_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -131,4 +156,9 @@ ActiveRecord::Schema.define(version: 20170407012737) do
   add_foreign_key "crew_slots", "specialties"
   add_foreign_key "facilities", "facilities", column: "parent_terminal_id"
   add_foreign_key "facilities", "ships"
+  add_foreign_key "flight_logs", "people"
+  add_foreign_key "flight_logs", "trips"
+  add_foreign_key "trips", "destinations"
+  add_foreign_key "trips", "facilities"
+  add_foreign_key "trips", "ships"
 end
