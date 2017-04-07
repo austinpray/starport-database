@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170407001227) do
+ActiveRecord::Schema.define(version: 20170407011604) do
 
   create_table "cargo", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "safefy_rating"
@@ -20,6 +20,34 @@ ActiveRecord::Schema.define(version: 20170407001227) do
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
     t.index ["person_id"], name: "index_cargo_on_person_id", using: :btree
+  end
+
+  create_table "crew_slot_assignments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "person_id"
+    t.integer  "ship_id"
+    t.integer  "crew_slot_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["crew_slot_id"], name: "index_crew_slot_assignments_on_crew_slot_id", using: :btree
+    t.index ["person_id"], name: "index_crew_slot_assignments_on_person_id", using: :btree
+    t.index ["ship_id"], name: "index_crew_slot_assignments_on_ship_id", using: :btree
+  end
+
+  create_table "crew_slots", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.text     "description",  limit: 65535
+    t.integer  "specialty_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["specialty_id"], name: "index_crew_slots_on_specialty_id", using: :btree
+  end
+
+  create_table "destinations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.text     "description", limit: 65535
+    t.decimal  "distance",                  precision: 10
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   create_table "people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -44,6 +72,20 @@ ActiveRecord::Schema.define(version: 20170407001227) do
   create_table "people_specialties", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "person_id",    null: false
     t.integer "specialty_id", null: false
+  end
+
+  create_table "ships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "class"
+    t.text     "description",        limit: 65535
+    t.string   "photo_url"
+    t.integer  "passenger_capacity"
+    t.decimal  "base_fare",                        precision: 10
+    t.integer  "shield_rating"
+    t.integer  "armor_rating"
+    t.decimal  "cargo_capacity",                   precision: 10
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
   end
 
   create_table "specialties", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -71,4 +113,8 @@ ActiveRecord::Schema.define(version: 20170407001227) do
   end
 
   add_foreign_key "cargo", "people"
+  add_foreign_key "crew_slot_assignments", "crew_slots"
+  add_foreign_key "crew_slot_assignments", "people"
+  add_foreign_key "crew_slot_assignments", "ships"
+  add_foreign_key "crew_slots", "specialties"
 end

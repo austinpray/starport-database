@@ -23,4 +23,5 @@
 
 class Person < ApplicationRecord
   has_and_belongs_to_many :specialties
+  has_one :crew_slot
 end

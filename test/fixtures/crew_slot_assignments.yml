@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  person: one
+  ship: one
+  crew_slot: one
+
+two:
+  person: two
+  ship: two
+  crew_slot: two
