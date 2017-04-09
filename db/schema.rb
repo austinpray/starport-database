@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170407205717) do
+ActiveRecord::Schema.define(version: 20170409000239) do
 
   create_table "cargo", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "safefy_rating"
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 20170407205717) do
 
   create_table "ships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.string   "class"
+    t.string   "ship_class"
     t.text     "description",        limit: 65535
     t.string   "photo_url"
     t.integer  "passenger_capacity"

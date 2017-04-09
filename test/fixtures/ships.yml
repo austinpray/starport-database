@@ -4,7 +4,7 @@
 #
 #  id                 :integer          not null, primary key
 #  name               :string(255)
-#  class              :string(255)
+#  ship_class         :string(255)
 #  description        :text(65535)
 #  photo_url          :string(255)
 #  passenger_capacity :integer
