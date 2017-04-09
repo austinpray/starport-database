@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ship.name %>
+</p>
+
+<p>
+  <strong>Ship class:</strong>
+  <%= @ship.ship_class %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @ship.description %>
+</p>
+
+<p>
+  <strong>Photo url:</strong>
+  <%= @ship.photo_url %>
+</p>
+
+<p>
+  <strong>Passenger capacity:</strong>
+  <%= @ship.passenger_capacity %>
+</p>
+
+<p>
+  <strong>Base fare:</strong>
+  <%= @ship.base_fare %>
+</p>
+
+<p>
+  <strong>Shield rating:</strong>
+  <%= @ship.shield_rating %>
+</p>
+
+<p>
+  <strong>Armor rating:</strong>
+  <%= @ship.armor_rating %>
+</p>
+
+<p>
+  <strong>Cargo capacity:</strong>
+  <%= @ship.cargo_capacity %>
+</p>
+
+<%= link_to 'Edit', edit_ship_path(@ship) %> |
+<%= link_to 'Back', ships_path %>

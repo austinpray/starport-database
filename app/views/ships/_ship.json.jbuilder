@@ -1,0 +1,2 @@
+json.extract! ship, :id, :name, :ship_class, :description, :photo_url, :passenger_capacity, :base_fare, :shield_rating, :armor_rating, :cargo_capacity, :created_at, :updated_at
+json.url ship_url(ship, format: :json)
