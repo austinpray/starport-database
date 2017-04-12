@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :cargo
   resources :ships
   resources :people
   get 'welcome/index'

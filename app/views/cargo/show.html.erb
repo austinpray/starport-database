@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Safefy rating:</strong>
+  <%= @cargo.safefy_rating %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @cargo.description %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @cargo.person %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @cargo.weight %>
+</p>
+
+<%= link_to 'Edit', edit_cargo_path(@cargo) %> |
+<%= link_to 'Back', cargo_index_path %>

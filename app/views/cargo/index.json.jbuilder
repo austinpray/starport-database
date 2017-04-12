@@ -1,0 +1,1 @@
+json.array! @cargo, partial: 'cargo/cargo', as: :cargo
