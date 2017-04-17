@@ -1,0 +1,43 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Your Ship: <em><%= @ship[:name] %></em>
+  </div>
+  <div class="panel-body text-center">
+    <div style="max-width: 150px; margin: 0 auto;">
+      <img src="<%= @ship.svg_image.colorized_image_url(current_user.color) %>">
+    </div>
+  </div>
+  <table class="table">
+    <tr>
+      <th>Ship Class</th>
+      <td><%= @ship[:ship_class] %></td>
+    </tr>
+    <tr>
+      <th>Description</th>
+      <td><%= @ship[:description] %></td>
+    </tr>
+    <tr>
+      <th>Passenger Capacity</th>
+      <td><%= @ship[:passenger_capacity] %></td>
+    </tr>
+    <tr>
+      <th>Base Fare</th>
+      <td><%= @ship[:base_fare] || 'Free?' %></td>
+    </tr>
+    <tr>
+      <th>Shield Rating</th>
+      <td><%= @ship[:shield_rating] || 'None?' %></td>
+    </tr>
+    <tr>
+      <th>Armor Rating</th>
+      <td><%= @ship[:armor_rating] || 'None?' %></td>
+    </tr>
+    <tr>
+      <th>Cargo Capacity</th>
+      <td><%= @ship[:cargo_capacity] || 0 %> kilograms</td>
+    </tr>
+  </table>
+  <div class="panel-footer">
+    <%= link_to "Launch Ship", radar_path, class: "btn btn-lg btn-primary" %>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Svg Images</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Name</th>
+      <th>Source</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @svg_images.each do |svg_image| %>
+      <tr>
+        <td><img src="<%= svg_image.colorized_image_url('aqua') %>" width="100"></td>
+        <td><%= svg_image.name %></td>
+        <td><%= svg_image.source %></td>
+        <td><%= link_to 'Show', svg_image %></td>
+        <td><%= link_to 'Edit', edit_svg_image_path(svg_image) %></td>
+        <td><%= link_to 'Destroy', svg_image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Svg Image', new_svg_image_path %>

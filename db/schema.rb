@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170409000239) do
+ActiveRecord::Schema.define(version: 20170423213309) do
 
   create_table "cargo", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "safefy_rating"
@@ -102,6 +102,8 @@ ActiveRecord::Schema.define(version: 20170409000239) do
     t.decimal  "cargo_capacity",                   precision: 10
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
+    t.integer  "svg_image_id"
+    t.index ["svg_image_id"], name: "fk_rails_ad2aeaf3c9", using: :btree
   end
 
   create_table "specializations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -118,6 +120,15 @@ ActiveRecord::Schema.define(version: 20170409000239) do
     t.text     "description", limit: 65535
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "svg_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "data",       limit: 65535
+    t.string   "name"
+    t.string   "source"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["name"], name: "index_svg_images_on_name", unique: true, using: :btree
   end
 
   create_table "trips", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -149,8 +160,11 @@ ActiveRecord::Schema.define(version: 20170409000239) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "ship_id"
+    t.string   "color"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["ship_id"], name: "index_users_on_ship_id", using: :btree
   end
 
   add_foreign_key "cargo", "people"
@@ -162,9 +176,11 @@ ActiveRecord::Schema.define(version: 20170409000239) do
   add_foreign_key "facilities", "ships"
   add_foreign_key "flight_logs", "people"
   add_foreign_key "flight_logs", "trips"
+  add_foreign_key "ships", "svg_images"
   add_foreign_key "specializations", "people"
   add_foreign_key "specializations", "specialties"
   add_foreign_key "trips", "destinations"
   add_foreign_key "trips", "facilities"
   add_foreign_key "trips", "ships"
+  add_foreign_key "users", "ships"
 end

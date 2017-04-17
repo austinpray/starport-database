@@ -1,0 +1,99 @@
+<div class="page-header">
+  <h1>User Dashboard</h1>
+</div>
+<div class="row">
+  <div class="col-sm-12 col-lg-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">You</div>
+      <div class="panel-body">
+        <dl class="dl-horizontal">
+          <dt>Color</dt>
+          <dd style="color: <%= @user.color %>">
+            <i class="glyphicon glyphicon-user"></i>
+            <%= @user.color %>
+            <%= button_to 'get new color', new_color_path, class: 'btn btn-primary btn-xs' %>
+          </dd>
+          <dt>User ID</dt>
+          <dd><%= @user.id %></dd>
+          <dt>Email</dt>
+          <dd><%= @user.email %></dd>
+          <dt>Sign In Count</dt>
+          <dd><%= @user.sign_in_count %></dd>
+          <dt>IP</dt>
+          <dd><%= @user.current_sign_in_ip %></dd>
+          <dt>Account Age</dt>
+          <dd><%= time_ago_in_words(@user.created_at) %></dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-lg-4">
+    <% if @ship.nil? %>
+        <div class="panel panel-default">
+          <div class="panel-heading">Your Current Ship</div>
+          <div class="panel-body">
+            <div class="alert alert-warning" role="alert">You haven't created a ship yet! You should do that:
+              <%= link_to "Create a Ship", launch_wizard_new_ship_info_path, class: "alert-link" %>
+            </div>
+          </div>
+        </div>
+    <% else %>
+        <%= render partial: 'partials/ship_panel' %>
+    <% end %>
+  </div>
+  <div class="col-sm-6 col-lg-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Available Actions</div>
+      <div class="panel-body">
+        <div class="media">
+          <div class="media-left">
+            <% if @ship.nil? %>
+                <%= image_tag "radar.svg", width: 64 %>
+            <% else %>
+                <%= link_to radar_path do %>
+                    <%= image_tag "radar.svg", width: 64 %>
+                <% end %>
+            <% end %>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">
+              <% if @ship.nil? %>
+                <del>Launch Ship</del>
+                (<%= link_to "create a ship", launch_wizard_new_ship_info_path, class: "alert-link" %> first)
+              <% else %>
+                  <%= link_to "Launch Ship", radar_path %>
+              <% end %>
+            </h4>
+            See a live view of other ships flying around in space.
+          </div>
+        </div>
+        <div class="media">
+          <div class="media-left">
+            <%= link_to launch_wizard_new_ship_info_path, class: "alert-link" do %>
+                <%= image_tag "xwing.svg", width: 64 %>
+            <% end %>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">
+              <%= link_to "Create a New Ship", launch_wizard_new_ship_info_path, class: "alert-link" %>
+            </h4>
+            Choose a ship that you can pilot around in the live pilot ship view.
+          </div>
+        </div>
+        <div class="media">
+          <div class="media-left">
+            <%= link_to(destroy_user_session_path, :method => :delete) do %>
+                <%= image_tag "exit.svg", width: 64 %>
+            <% end %>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">
+              <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+            </h4>
+            End your session.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

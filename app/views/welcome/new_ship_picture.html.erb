@@ -1,0 +1,21 @@
+<%= render partial: 'partials/launch_wizard_header' %>
+<%= form_tag launch_wizard_set_new_ship_picture_path, method: "post" do %>
+  <table class="table">
+    <% @picture_options.each do |picture| %>
+      <tr>
+        <td style="vertical-align: middle" width="20">
+          <input id="p-<%= picture.id %>" type="radio" name="picture" value="<%= picture.id %>" title="<%= picture.id %>">
+        </td>
+        <td>
+          <label for="p-<%= picture.id %>">
+            <div style="max-width: 150px">
+              <!-- XSS!!!!! -->
+              <%= raw picture.sanitized_data %>
+            </div>
+          </label>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <input type="submit" name="commit" value="Next" class="btn btn-primary" />
+<% end %>

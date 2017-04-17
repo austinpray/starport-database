@@ -1,0 +1,83 @@
+<%= render partial: 'partials/launch_wizard_header' %>
+<h2>Ship Info</h2>
+<%= form_for(@ship) do |f| %>
+    <% if @ship.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@ship.errors.count, "error") %> prohibited this ship from being saved:</h2>
+
+          <ul>
+            <% @ship.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="form-group">
+      <%= f.label :name, "Ship Name (required)" %>
+      <%= f.text_field :name, class: "form-control", required: true, placeholder: "enter your ship's name" %>
+      <div class="help-block">
+        Name for your ship. We use the same naming conventions as terrestrial naval vessels in space FYI.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :ship_class %>
+      <%= f.text_field :ship_class, class: "form-control", placeholder: "enter a ship class" %>
+      <div class="help-block">
+        See <a href="https://en.wikipedia.org/wiki/List_of_naval_ship_classes_in_service">ship classes</a>. Not really used for anything.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "form-control", placeholder: "describe your ship" %>
+      <div class="help-block">
+        Will be displayed on your ship's profile.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :passenger_capacity %>
+      <%= f.number_field :passenger_capacity, class: "form-control", min: 0, placeholder: "enter passenger capacity" %>
+      <div class="help-block">
+        Does your ship hold passengers? How many?
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :base_fare, "Base fare (in dollars)" %>
+      <%= f.text_field :base_fare, class: "form-control", placeholder: "enter base fare" %>
+      <div class="help-block">
+        How much does it cost to hire your ship for a trip?
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :shield_rating %>
+      <%= f.number_field :shield_rating, class: "form-control", min: 0, placeholder: "enter shield rating" %>
+      <div class="help-block">
+        If your ship has shields: give it a shield rating. A respectable shield would have a rating of around 100.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :armor_rating %>
+      <%= f.number_field :armor_rating, class: "form-control", placeholder: "enter armor rating" %>
+      <div class="help-block">
+        If your shield has armor: give it an armor rating. Usually this is around 100 for regular military vessels. A heavily armored ship could have a rating in the thousands.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :cargo_capacity, "Cargo Capacity (in kilograms)" %>
+      <%= f.text_field :cargo_capacity, class: "form-control", placeholder: "enter cargo capacity" %>
+      <div class="help-block">
+        How many kilograms of cargo can your ship hold?
+      </div>
+    </div>
+
+    <div class="actions">
+      <input type="hidden" name="is_launch_wizard" value="true" />
+      <%= f.submit "Next", class: "btn btn-primary" %>
+    </div>
+<% end %>

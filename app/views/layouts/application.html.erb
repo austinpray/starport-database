@@ -2,14 +2,18 @@
 <html>
   <head>
     <title>D.B.M.S. Cohort Starport</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
 
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css" rel="stylesheet" integrity="sha384-Xqcy5ttufkC3rBa8EdiAyA1VgOGrmel2Y+wxm4K3kI3fcjTWlDWrlnxyD6hOi3PF" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <%= javascript_pack_tag 'application' %>
   </head>
 
   <body>
+  <div class="flex-container">
   <%= render 'partials/navigation' %>
   <% if notice %>
       <div class="alert alert-info" role="alert"><%= notice %></div>
@@ -17,9 +21,17 @@
   <% if alert %>
       <div class="alert alert-warning" role="alert"><%= alert %></div>
   <% end %>
-  <div class="container-fluid">
+  <div class="flex-content container-fluid">
     <%= yield %>
   </div>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <% unless @skip_footer %>
+  <div class="flex-footer container-fluid">
+    <p class="text-center text-muted">
+      contribute on GitHub:
+      <a href="https://github.com/austinpray/starport-database">austinpray/starport-database</a>
+    </p>
+  </div>
+  <% end %>
+  </div>
   </body>
 </html>

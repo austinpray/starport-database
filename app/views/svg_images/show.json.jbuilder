@@ -1,0 +1,1 @@
+json.partial! "svg_images/svg_image", svg_image: @svg_image

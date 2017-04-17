@@ -1,0 +1,32 @@
+<%= form_for(svg_image) do |f| %>
+  <% if svg_image.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(svg_image.errors.count, "error") %> prohibited this svg_image from being saved:</h2>
+
+      <ul>
+      <% svg_image.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :data %>
+    <%= f.text_area :data %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :source %>
+    <%= f.text_field :source %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

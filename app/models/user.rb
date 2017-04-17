@@ -22,4 +22,38 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  after_initialize :init
+
+  after_update :bust_cache
+
+
+  belongs_to :ship, optional: true
+
+  def get_new_color
+    self.color = [
+      'red'.paint.palette.monochromatic(size: 64, as: :hex),
+      'green'.paint.palette.monochromatic(size: 64, as: :hex),
+      'orange'.paint.palette.monochromatic(size: 64, as: :hex),
+      'aqua'.paint.palette.monochromatic(size: 64, as: :hex),
+      'fuchsia'.paint.palette.monochromatic(size: 64, as: :hex)
+    ].flatten.sample
+    self.color = color.paint.lighten(50) if color.paint.dark?
+  end
+
+  def self.find_cached(id)
+    Rails.cache.fetch("user/#{id}", expires_in: 5.minute) do
+      find(id)
+    end
+  end
+
+  private
+
+  def bust_cache
+    Rails.cache.delete("user/#{id}")
+  end
+
+  def init
+    self.color ||= get_new_color
+  end
 end

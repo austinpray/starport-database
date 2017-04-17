@@ -13,3 +13,38 @@
  *= require_tree .
  *= require_self
  */
+
+.blink {
+    animation: blinker 1.7s cubic-bezier(.5, 0, 1, 1) infinite alternate;
+}
+@keyframes blinker { to { opacity: 0; } }
+
+html, body {
+    height: 100%;
+}
+
+.flex-container {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+.flex-container .navbar {
+    flex: 0 1 auto;
+    /* The above is shorthand for:
+    flex-grow: 0,
+    flex-shrink: 1,
+    flex-basis: auto
+    */
+}
+
+.flex-container .flex-content {
+    width: 100%;
+    flex: 1 1 auto;
+    position: relative;
+}
+
+.flex-container .flex-footer {
+    flex: 0 1 40px;
+}
+

@@ -18,4 +18,20 @@
 
 class Ship < ApplicationRecord
   has_many :crew_slot_assignments
+  has_one :user
+  belongs_to :svg_image
+
+  after_initialize :init
+
+  def self.find_cached(id)
+    Rails.cache.fetch("ship/#{id}", expires_in: 5.minute) do
+      find(id)
+    end
+  end
+
+  private
+
+  def init
+    self.svg_image ||= SvgImage.first
+  end
 end
