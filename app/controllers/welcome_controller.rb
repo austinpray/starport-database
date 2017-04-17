@@ -16,6 +16,9 @@ class WelcomeController < ApplicationController
 
   def dashboard
     @user = current_user
+    if session[:ship]
+      @ship = Ship.find(session[:ship])
+    end
   end
 
   def existing_or_new
@@ -32,6 +35,25 @@ class WelcomeController < ApplicationController
   end
 
   def set_new_ship_picture
+    id = params[:ship_id]
+    picture_key = params[:picture]
+    ship = Ship.find(id)
+    picture = @picture_options[picture_key.to_sym]
+    logger.debug picture.inspect
+    logger.debug picture.nil?
+    return redirect_to launch_wizard_set_new_ship_picture_path, alert: 'that picture is not whitelisted' if picture.nil?
+    ship.photo_url = picture[:url]
+    return redirect_to launch_wizard_new_ship_done_path if ship.save
 
+    redirect_to launch_wizard_set_new_ship_picture_path, alert: 'failed to save picture'
+  end
+
+  def new_ship_summary
+    @wizard_step = 3
+    @ship = Ship.find(params[:ship_id])
+  end
+
+  def radar
+    @ship = Ship.find(session[:ship])
   end
 end

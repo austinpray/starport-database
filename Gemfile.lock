@@ -43,6 +43,7 @@ GEM
       rake (>= 0.8.7)
     arel (7.1.4)
     bcrypt (3.1.11)
+    brakeman (3.6.1)
     builder (3.2.3)
     byebug (9.0.6)
     choice (0.2.0)
@@ -170,6 +171,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  brakeman
   byebug
   devise
   jbuilder (~> 2.5)
@@ -191,4 +193,4 @@ RUBY VERSION
    ruby 2.4.0p0
 
 BUNDLED WITH
-   1.14.3
+   1.14.6

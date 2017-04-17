@@ -1,5 +1,5 @@
 <%= render partial: 'partials/launch_wizard_header' %>
-<form>
+<%= form_tag launch_wizard_set_new_ship_picture_path, method: "post" do %>
   <table class="table">
     <% @picture_options.each do |key, value| %>
       <tr>
@@ -13,5 +13,4 @@
     <% end %>
   </table>
   <input type="submit" name="commit" value="Next" class="btn btn-primary" />
-</form>
-
+<% end %>

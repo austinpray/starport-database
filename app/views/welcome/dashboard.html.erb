@@ -5,11 +5,49 @@
   <div class="col-sm-6 col-lg-4">
     <div class="panel panel-default">
       <div class="panel-heading">Your Current Ship</div>
-      <div class="panel-body">
-        <div class="alert alert-warning" role="alert">You haven't selected a ship yet! You should do that:
-          <%= link_to "Select a Ship", begin_launch_wizard_path, class: "alert-link" %>
-        </div>
-      </div>
+      <% if @ship.nil? %>
+          <div class="panel-body">
+            <div class="alert alert-warning" role="alert">You haven't selected a ship yet! You should do that:
+              <%= link_to "Select a Ship", begin_launch_wizard_path, class: "alert-link" %>
+            </div>
+          </div>
+        <% else %>
+          <!-- TODO: partial this -->
+          <!-- this is copy pasted -->
+          <div class="panel-body text-center">
+            <img width="150" src="<%= sanitize @ship[:photo_url] %>" />
+          </div>
+          <table class="table">
+            <tr>
+              <th>Ship Class</th>
+              <td><%= @ship[:ship_class] %></td>
+            </tr>
+            <tr>
+              <th>Description</th>
+              <td><%= @ship[:description] %></td>
+            </tr>
+            <tr>
+              <th>Passenger Capacity</th>
+              <td><%= @ship[:passenger_capacity] %></td>
+            </tr>
+            <tr>
+              <th>Base Fare</th>
+              <td><%= @ship[:base_fare] || 'Free?' %></td>
+            </tr>
+            <tr>
+              <th>Shield Rating</th>
+              <td><%= @ship[:shield_rating] || 'None?' %></td>
+            </tr>
+            <tr>
+              <th>Armor Rating</th>
+              <td><%= @ship[:armor_rating] || 'None?' %></td>
+            </tr>
+            <tr>
+              <th>Cargo Capacity</th>
+              <td><%= @ship[:cargo_capacity] || 0 %> kilograms</td>
+            </tr>
+          </table>
+      <% end %>
     </div>
   </div>
   <div class="col-sm-6 col-lg-4">
@@ -18,12 +56,14 @@
       <div class="panel-body">
         <div class="media">
           <div class="media-left">
-            <a href="#">
+            <%= link_to radar_path do %>
               <%= image_tag "radar.svg", width: 64 %>
-            </a>
+            <% end %>
           </div>
           <div class="media-body">
-            <h4 class="media-heading">Pilot Ship View</h4>
+            <h4 class="media-heading">
+              <%= link_to "Pilot Ship View", radar_path %>
+            </h4>
             See a live view of other ships flying around in space.
           </div>
         </div>

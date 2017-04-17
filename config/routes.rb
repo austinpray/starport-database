@@ -14,6 +14,16 @@ Rails.application.routes.draw do
     get '/launch/new-ship/:ship_id/picture',
         to: 'welcome#new_ship_picture',
         as: :launch_wizard_new_ship_picture
+    post '/launch/new-ship/:ship_id/picture',
+         to: 'welcome#set_new_ship_picture',
+         as: :launch_wizard_set_new_ship_picture
+    get '/launch/new-ship/:ship_id/summary',
+        to: 'welcome#new_ship_summary',
+        as: :launch_wizard_new_ship_done
+
+    get '/launch/radar',
+        to: 'welcome#radar',
+        as: :radar
   end
 
   root 'welcome#index'

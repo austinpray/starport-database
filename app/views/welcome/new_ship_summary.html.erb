@@ -1,0 +1,46 @@
+<%= render partial: 'partials/launch_wizard_header' %>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        Ship: <%= sanitize @ship[:name] %>
+      </div>
+      <div class="panel-body text-center">
+        <img width="150" src="<%= sanitize @ship[:photo_url] %>" />
+      </div>
+      <table class="table">
+        <tr>
+          <th>Ship Class</th>
+          <td><%= @ship[:ship_class] %></td>
+        </tr>
+        <tr>
+          <th>Description</th>
+          <td><%= @ship[:description] %></td>
+        </tr>
+        <tr>
+          <th>Passenger Capacity</th>
+          <td><%= @ship[:passenger_capacity] %></td>
+        </tr>
+        <tr>
+          <th>Base Fare</th>
+          <td><%= @ship[:base_fare] || 'Free?' %></td>
+        </tr>
+        <tr>
+          <th>Shield Rating</th>
+          <td><%= @ship[:shield_rating] || 'None?' %></td>
+        </tr>
+        <tr>
+          <th>Armor Rating</th>
+          <td><%= @ship[:armor_rating] || 'None?' %></td>
+        </tr>
+        <tr>
+          <th>Cargo Capacity</th>
+          <td><%= @ship[:cargo_capacity] || 0 %> kilograms</td>
+        </tr>
+      </table>
+      <div class="panel-footer">
+        <%= link_to "Launch Ship", radar_path, class: "btn btn-lg btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

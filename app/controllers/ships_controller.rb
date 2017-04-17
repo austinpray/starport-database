@@ -30,6 +30,7 @@ class ShipsController < ApplicationController
       if @ship.save
         format.html do
           if params[:is_launch_wizard]
+            session[:ship] = @ship.id
             return redirect_to launch_wizard_new_ship_picture_path(ship_id: @ship.id), notice: 'Ship was successfully created.'
           end
           redirect_to @ship, notice: 'Ship was successfully created.'
