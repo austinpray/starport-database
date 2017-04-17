@@ -1,0 +1,17 @@
+<%= render partial: 'partials/launch_wizard_header' %>
+<form>
+  <table class="table">
+    <% @picture_options.each do |key, value| %>
+      <tr>
+        <td style="vertical-align: middle" width="20">
+          <input id="p-<%= key %>" type="radio" name="picture" value="<%= key %>" title="<%= key %>">
+        </td>
+        <td>
+          <label for="p-<%= key %>"><img style="max-width: 150px" src="<%= value[:url] %>" /></label>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <input type="submit" name="commit" value="Next" class="btn btn-primary" />
+</form>
+

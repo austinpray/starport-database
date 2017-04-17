@@ -1,0 +1,12 @@
+<div class="page-header">
+  <% case @wizard_step
+     when 0 %>
+    <h1>Launch a Ship</h1>
+  <% when 1 %>
+      <h1>Step 1: Create a Ship</h1>
+  <% when 2 %>
+    <h1>Step 2: Choose your ship's picture</h1>
+  <% else %>
+      :(
+  <% end %>
+</div>

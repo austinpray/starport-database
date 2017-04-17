@@ -1,0 +1,77 @@
+<div class="page-header">
+  <h1>User Dashboard</h1>
+</div>
+<div class="row">
+  <div class="col-sm-6 col-lg-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Your Current Ship</div>
+      <div class="panel-body">
+        <div class="alert alert-warning" role="alert">You haven't selected a ship yet! You should do that:
+          <%= link_to "Select a Ship", begin_launch_wizard_path, class: "alert-link" %>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-lg-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Available Actions</div>
+      <div class="panel-body">
+        <div class="media">
+          <div class="media-left">
+            <a href="#">
+              <%= image_tag "radar.svg", width: 64 %>
+            </a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">Pilot Ship View</h4>
+            See a live view of other ships flying around in space.
+          </div>
+        </div>
+        <div class="media">
+          <div class="media-left">
+            <%= link_to begin_launch_wizard_path, class: "alert-link" do %>
+                <%= image_tag "xwing.svg", width: 64 %>
+            <% end %>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">
+              <%= link_to "Select A Ship", begin_launch_wizard_path, class: "alert-link" %>
+            </h4>
+            Choose a ship that you can pilot around in the live pilot ship view.
+          </div>
+        </div>
+        <div class="media">
+          <div class="media-left">
+            <%= link_to(destroy_user_session_path, :method => :delete) do %>
+                <%= image_tag "exit.svg", width: 64 %>
+            <% end %>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">
+              <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+            </h4>
+            End your session.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 col-lg-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Authentication Info</div>
+      <div class="panel-body">
+        <dl class="dl-horizontal">
+          <dt>User ID</dt>
+          <dd><%= @user.id %></dd>
+          <dt>Email</dt>
+          <dd><%= @user.email %></dd>
+          <dt>Sign In Count</dt>
+          <dd><%= @user.sign_in_count %></dd>
+          <dt>IP</dt>
+          <dd><%= @user.current_sign_in_ip %></dd>
+          <dt>Account Age</dt>
+          <dd><%= time_ago_in_words(@user.created_at) %></dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>

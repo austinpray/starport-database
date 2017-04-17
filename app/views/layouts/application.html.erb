@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>D.B.M.S. Cohort Starport</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
 
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css" rel="stylesheet" integrity="sha384-Xqcy5ttufkC3rBa8EdiAyA1VgOGrmel2Y+wxm4K3kI3fcjTWlDWrlnxyD6hOi3PF" crossorigin="anonymous">
@@ -19,6 +20,12 @@
   <% end %>
   <div class="container-fluid">
     <%= yield %>
+  </div>
+  <div class="container-fluid">
+    <p class="text-center text-muted">
+      contribute on GitHub:
+      <a href="https://github.com/austinpray/starport-database">austinpray/starport-database</a>
+    </p>
   </div>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>

@@ -28,7 +28,12 @@ class ShipsController < ApplicationController
 
     respond_to do |format|
       if @ship.save
-        format.html { redirect_to @ship, notice: 'Ship was successfully created.' }
+        format.html do
+          if params[:is_launch_wizard]
+            return redirect_to launch_wizard_new_ship_picture_path(ship_id: @ship.id), notice: 'Ship was successfully created.'
+          end
+          redirect_to @ship, notice: 'Ship was successfully created.'
+        end
         format.json { render :show, status: :created, location: @ship }
       else
         format.html { render :new }
@@ -69,6 +74,6 @@ class ShipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ship_params
-      params.require(:ship).permit(:name, :ship_class, :description, :photo_url, :passenger_capacity, :base_fare, :shield_rating, :armor_rating, :cargo_capacity)
+      params.require(:ship).permit(:name, :ship_class, :description, :passenger_capacity, :base_fare, :shield_rating, :armor_rating, :cargo_capacity)
     end
 end
