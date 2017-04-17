@@ -14,17 +14,18 @@ RUN apt-get update \
 
 RUN apt-get update \
     	&& apt-get install -y --no-install-recommends \
-    	    git \
-    	    build-essential \
-    	    graphviz \
-    	    libmariadb2 \
+            git \
+            build-essential \
+            patch \
+            zlib1g-dev \
+            liblzma-dev \
+            graphviz \
+            libmysqlclient-dev \
             libxml2-dev \
             libxslt-dev \
             nodejs \
             yarn \
     	&& rm -rf /var/lib/apt/lists/*
-
-RUN bundle config build.nokogiri --use-system-libraries
 
 EXPOSE 3000
 
