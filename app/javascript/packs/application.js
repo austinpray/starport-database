@@ -6,5 +6,13 @@
 //
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
+const Radar = require("../radar").default;
+const ReactDOM = require("react-dom");
+const React = require("react");
 
-console.log('Hello World from Webpacker')
+document.addEventListener("turbolinks:load", function() {
+    const entry = document.getElementById("radar_entry");
+    if (entry) {
+        ReactDOM.render(<Radar/>, entry);
+    }
+});

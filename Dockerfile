@@ -27,8 +27,6 @@ RUN apt-get update \
             yarn \
     	&& rm -rf /var/lib/apt/lists/*
 
-EXPOSE 3000
-
 ENV BUNDLE_PATH /ruby_gems
 
 CMD ["bin/rails", "s", "-b", "0.0.0.0"]
