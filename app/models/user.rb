@@ -22,4 +22,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def self.find_cached(id)
+    Rails.cache.fetch("user/#{id}", expires_in: 5.minute) do
+      find(id)
+    end
+  end
 end

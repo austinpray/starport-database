@@ -1,19 +1,39 @@
 import React, {Component} from "react";
 import ConnectionIndicator from "./components/ConnectionIndicator";
 
-const RADAR_WIDTH = 1000;
-const RADAR_HEIGHT = 1000;
-
 class Ship extends Component {
-
+    render() {
+        const {x, y} = this.props;
+        return <div style={{top: y, left: x, position: "absolute", background: "red", width: "50px", height: "50px"}}>
+            SHIP WEEE
+        </div>
+    }
 }
+
+const DOWN = 74;
+const UP =  75;
 
 export default class Radar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            connected: false
+            connected: false,
+            current_user: null,
+            x: 0,
+            y: 0
         };
+    }
+
+    handleMove(e) {
+        if (!this.state.connected) {
+            return;
+        }
+        if (e.keyCode === DOWN) {
+            this.setState({top: this.state.top + INCREMENT});
+        }
+        if (e.keyCode === UP) {
+            this.setState({top: this.state.top - INCREMENT});
+        }
     }
 
     componentDidMount() {
@@ -21,9 +41,7 @@ export default class Radar extends Component {
         const ws = App.cable.subscriptions.create("RadarChannel", {
             connected: () => {
                 // Called when the subscription is ready for use on the server
-                this.setState({
-                    connected: true
-                })
+                this.setState({ connected: true })
             },
 
             disconnected: () => {
@@ -33,16 +51,19 @@ export default class Radar extends Component {
             },
 
             received: (data) => {
-                if (data.type === "state") {
-                    console.log(data);
-                    if (this.state.time && this.state.time > data.time) {
-                        // we have fresher data
-                        return;
-                    }
-                    this.setState({
-                        time: data.time,
-                        board: JSON.parse(data.body)
-                    });
+                console.log(data)
+                switch(data.type) {
+                    case "user":
+                    case "state":
+                        console.log(data);
+                        if (this.state.time && this.state.time > data.time) {
+                            // we have fresher data
+                            return;
+                        }
+                        return this.setState({
+                            time: data.time,
+                            board: JSON.parse(data.body)
+                        });
                 }
             },
 
@@ -62,6 +83,9 @@ export default class Radar extends Component {
         return <div>
             <ConnectionIndicator connected={connected} />
             {this.state.ws && <button onClick={this.state.ws.sendNewCoords.bind(this, 1, 1)}>Test</button>}
+            {this.state.board && Object.keys(this.state.board).map((key) => {
+                return <Ship key={key} {...this.state.board[key]} />
+            })}
         </div>
     }
 }

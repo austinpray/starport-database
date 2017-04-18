@@ -18,4 +18,9 @@
 
 class Ship < ApplicationRecord
   has_many :crew_slot_assignments
+  def self.find_cached(id)
+    Rails.cache.fetch("ship/#{id}", expires_in: 5.minute) do
+      find(id)
+    end
+  end
 end
