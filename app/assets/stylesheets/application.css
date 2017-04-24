@@ -48,3 +48,8 @@ html, body {
     flex: 0 1 40px;
 }
 
+.max-height-image {
+    display: block;
+    margin: 0 auto;
+    max-height: 250px;
+}

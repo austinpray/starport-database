@@ -1,3 +1,11 @@
+<% unless user_signed_in? %>
+    <div class="alert alert-info">
+      To pilot a ship you have to be logged in.
+      <%= link_to 'log in', new_user_session_path, :class => "alert-link" %>
+      or
+      <%= link_to 'sign up', new_user_registration_path, :class => "alert-link" %>
+    </div>
+<% end %>
 <div class="jumbotron jumbotron-welcome">
   <h1>Starport Operations Center</h1>
   <% if user_signed_in? %>
@@ -6,7 +14,7 @@
         <%= link_to "User Dashboard", dashboard_path, :class => "btn btn-primary btn-lg" %>
       </p>
   <% else %>
-      <p>This application manages the day-to-day operations of the starport. Sign in to pilot a ship.</p>
+      <p>Spread WOW factor across the universe.</p>
       <p>
         <%= link_to "Get Started", new_user_session_path, :class => "btn btn-primary btn-lg" %>
       </p>
@@ -16,33 +24,43 @@
   <h1>Starport Management</h1>
 </div>
 <div class="row">
-  <div class="col-sm-6 col-md-4">
+  <div class="col-sm-6 col-md-3">
     <div class="thumbnail">
-      <%= image_tag "troopers.jpg" %>
+      <%= image_tag "ripley.jpg", class: "max-height-image" %>
       <div class="caption">
-        <h3>Passengers</h3>
-        <p>...</p>
-        <p><a href="#" class="btn btn-primary" role="button">Manage Passengers</a></p>
+        <h3>User Dashboard</h3>
+        <p>Visit your personal user dashboard.</p>
+        <p><%= link_to "User Dashboard", dashboard_path, :class => "btn btn-primary" %></p>
       </div>
     </div>
   </div>
-  <div class="col-sm-6 col-md-4">
+  <div class="col-sm-6 col-md-3">
     <div class="thumbnail">
-      <%= image_tag "people.jpg" %>
+      <%= image_tag "troopers.jpg", class: "max-height-image" %>
       <div class="caption">
         <h3>People</h3>
-        <p>...</p>
+        <p>View a list of people</p>
         <p><%= link_to "Manage People", people_path, :class => "btn btn-primary" %></p>
       </div>
     </div>
   </div>
-  <div class="col-sm-6 col-md-4">
+  <div class="col-sm-6 col-md-3">
     <div class="thumbnail">
-      <%= image_tag "ship.jpg" %>
+      <%= image_tag "ship.jpg", class: "max-height-image" %>
       <div class="caption">
         <h3>Ships</h3>
-        <p>...</p>
-        <p><a href="#" class="btn btn-primary" role="button">Manage Ships</a></p>
+        <p>View a list of ships</p>
+        <p><%= link_to "Manage Ships", people_path, :class => "btn btn-primary" %></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-3">
+    <div class="thumbnail">
+      <%= image_tag "xwing.svg", class: "max-height-image" %>
+      <div class="caption">
+        <h3>Manage SVG Images</h3>
+        <p>SVG Images are used to build and customize ships</p>
+        <p><%= link_to "Manage SVG Images", svg_images_path, :class => "btn btn-primary" %></p>
       </div>
     </div>
   </div>
