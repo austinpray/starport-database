@@ -27,6 +27,8 @@ Person Creation
   created_at          :datetime         not null
   updated_at          :datetime         not null
 =end
+
+=begin
 	person_list = [
 		["John", "Doe", "Male"]
 		["John", "Snow", "Male"]
@@ -104,3 +106,4 @@ end
 	randomNum = Random.rand(100000)
   Destination.create({name: "Planet #{randomNum}", distance: randomNum})
 end
+=end
