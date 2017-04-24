@@ -84,6 +84,10 @@ class SvgImage < ApplicationRecord
     "/svg_images/#{id}.svg?color=#{URI::encode(color)}"
   end
 
+  def random_colorized_image_url
+    colorized_image_url('aqua'.paint.palette.tetrad(size: 15, as: :hex).sample)
+  end
+
   def sanitized_data
     self.class.sanitize(data)
   end

@@ -15,7 +15,7 @@
   <tbody>
     <% @svg_images.each do |svg_image| %>
       <tr>
-        <td><img src="<%= svg_image.colorized_image_url('aqua') %>" width="100"></td>
+        <td><img src="<%= svg_image.random_colorized_image_url %>" width="100"></td>
         <td><%= svg_image.name %></td>
         <td><%= svg_image.source %></td>
         <td><%= link_to 'Show', svg_image %></td>

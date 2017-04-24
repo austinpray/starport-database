@@ -9,8 +9,7 @@
         <td>
           <label for="p-<%= picture.id %>">
             <div style="max-width: 150px">
-              <!-- XSS!!!!! -->
-              <%= raw picture.sanitized_data %>
+              <img src="<%= raw picture.colorized_image_url(current_user.color) %>">
             </div>
           </label>
         </td>

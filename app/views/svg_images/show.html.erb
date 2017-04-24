@@ -1,18 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Data:</strong>
-  <%= @svg_image.data %>
-</p>
+<h2>Image:</h2>
+<div class="row">
+  <figure class="col-md-3">
+    <img src="<%= @svg_image.random_colorized_image_url %>">
+  </figure>
+  <figure class="col-md-3">
+    <img src="<%= @svg_image.colorized_image_url('red') %>">
+  </figure>
+  <figure class="col-md-3">
+    <img src="<%= @svg_image.colorized_image_url('green') %>">
+  </figure>
+  <figure class="col-md-3">
+    <img src="<%= @svg_image.colorized_image_url('blue') %>">
+  </figure>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @svg_image.name %>
-</p>
+<h2>Data:</h2>
+<pre><code><%= @svg_image.data %></code></pre>
 
+<h2>Name:</h2>
+<p><%= @svg_image.name %></p>
+
+<h2>Source:</h2>
 <p>
-  <strong>Source:</strong>
-  <%= @svg_image.source %>
+<%= @svg_image.source %>
 </p>
 
 <%= link_to 'Edit', edit_svg_image_path(@svg_image) %> |
