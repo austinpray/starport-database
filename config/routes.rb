@@ -15,13 +15,13 @@ Rails.application.routes.draw do
     get '/launch/new-ship',
         to: 'welcome#new_ship_info',
         as: :launch_wizard_new_ship_info
-    get '/launch/new-ship/:ship_id/picture',
+    get '/launch/new-ship/picture',
         to: 'welcome#new_ship_picture',
         as: :launch_wizard_new_ship_picture
-    post '/launch/new-ship/:ship_id/picture',
+    post '/launch/new-ship/picture',
          to: 'welcome#set_new_ship_picture',
          as: :launch_wizard_set_new_ship_picture
-    get '/launch/new-ship/:ship_id/summary',
+    get '/launch/new-ship/summary',
         to: 'welcome#new_ship_summary',
         as: :launch_wizard_new_ship_done
 

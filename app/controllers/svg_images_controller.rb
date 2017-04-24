@@ -1,6 +1,8 @@
 class SvgImagesController < ApplicationController
   before_action :set_svg_image, only: [:show, :edit, :update, :destroy]
 
+  before_filter :restrict_access_to_admins, except: [:index, :show]
+
   # GET /svg_images
   # GET /svg_images.json
   def index

@@ -1,6 +1,7 @@
 class ShipsController < ApplicationController
   before_action :set_ship, only: [:show, :edit, :update, :destroy]
 
+  before_filter :restrict_access_to_admins, except: [:index, :create, :show]
   # GET /ships
   # GET /ships.json
   def index

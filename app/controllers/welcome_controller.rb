@@ -23,8 +23,7 @@ class WelcomeController < ApplicationController
   end
 
   def set_new_ship_picture
-    id = params[:ship_id]
-    ship = Ship.find(id)
+    ship = current_user.ship
     svg = SvgImage.find(params[:picture])
     ship.svg_image = svg
     return redirect_to launch_wizard_new_ship_done_path if ship.save

@@ -1,6 +1,7 @@
 class CargoController < ApplicationController
   before_action :set_cargo, only: [:show, :edit, :update, :destroy]
 
+  before_filter :restrict_access_to_admins, except: [:index, :show]
   # GET /cargo
   # GET /cargo.json
   def index

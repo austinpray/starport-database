@@ -1,6 +1,7 @@
 class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
 
+  before_filter :restrict_access_to_admins, except: [:index, :show]
   # GET /people
   # GET /people.json
   def index
