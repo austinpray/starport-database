@@ -9,6 +9,7 @@ This is a one-off school project for a database class. The primary effort was in
 - Organize controllers better (welcome_controller)
 - Copy pasted template partials
 - Possible XSS vulnerabilities with SVG?
+- ActionCable state is not preserved, it only relays messages from clients. This means a user has to move their ship to be seen after a new user connects.
 
 ## Run with Docker
 
