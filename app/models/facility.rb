@@ -13,6 +13,6 @@
 #
 
 class Facility < ApplicationRecord
-  belongs_to :ship
-  belongs_to :parent_terminal, class_name: "Facility"
+  belongs_to :ship, optional: true
+  belongs_to :parent_terminal, class_name: "Facility", optional: true
 end
