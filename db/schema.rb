@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170423213309) do
+ActiveRecord::Schema.define(version: 20170427022214) do
 
   create_table "cargo", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "safefy_rating"
+    t.integer  "safety_rating"
     t.text     "description",   limit: 65535
     t.integer  "person_id"
     t.decimal  "weight",                      precision: 10
